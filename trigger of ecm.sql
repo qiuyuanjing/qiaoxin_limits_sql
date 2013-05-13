@@ -41,7 +41,7 @@ BEGIN
       
     END IF;
 END;
-
+/
 --该触发器主要是，当用户修改<招标>文件的类型时，重新设置该文件相对应的权限。
 --drop TRIGGER CUS_TRIGGER_LIMITS_UPDATE
 --SELECT * FROM All_Triggers v WHERE v.table_name = 'DOCMETA';
@@ -84,3 +84,4 @@ BEGIN
         END IF;
   END IF;
 END;
+/

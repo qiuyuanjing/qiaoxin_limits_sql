@@ -1,3 +1,4 @@
+
 ---在ECM中添加一个job，用来同步备注与主文件的权限
 --what =》 DECLARE temp VARCHAR2(22); begin temp := CUS_QYJ_FUNC_UPDATE_MARKUP(); end;
 --Next date=》 sysdate
@@ -31,3 +32,9 @@ using '(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=172.16.62.227)(PORT=1531))(CONN
 create public database link to_ECM_Dev 
 connect to system identified by manager   
 using '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.60.163)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DEV)))';--这里要根据实际情况修改TNS
+
+--***********************************
+---在EBS中添加一个job，用来调度webService
+what =》 DECLARE temp NUMBER; BEGIN temp := APPS.CUX_QX_ECMLIMITS_PKG.CUS_FUNC_SEND_NOTIFICATION; COMMIT; END;
+Next date=》 sysdate
+Interval =》 TRUNC(sysdate,'mi') + 1/ (24*60)
